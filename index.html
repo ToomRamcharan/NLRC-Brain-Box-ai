@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLRC Homework Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="icon">✨</span>
+                <h1>NLRC Homework Solver</h1>
+            </div>
+            <p class="subtitle">Your expert personal tutor for any subject.</p>
+        </header>
+
+        <main>
+            <section class="input-section glass-panel">
+                <form id="solverForm">
+                    <div class="form-group full-width">
+                        <label for="question">Your Question</label>
+                        <div class="input-wrapper">
+                            <textarea id="question" placeholder="Paste your homework question here..."></textarea>
+                            <input type="file" id="imageInput" accept="image/*" hidden>
+                        </div>
+                        <div id="imagePreviewContainer" class="hidden">
+                            <div class="preview-chip">
+                                <img id="imagePreview" src="" alt="Preview">
+                                <button type="button" id="removeImageBtn">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="Math">Math</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="Social">Social Studies</option>
+                                <option value="Coding">Coding</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level">Level</label>
+                            <select id="level">
+                                <option value="School">School</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Degree">Degree</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language">
+                                <option value="English">English</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Kannada">Kannada</option>
+                                <option value="Malayalam">Malayalam</option>
+                                <option value="Marathi">Marathi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="notes">Extra Notes (Optional)</label>
+                        <input type="text" id="notes" placeholder="e.g., Explain simply, use examples...">
+                    </div>
+
+                    <div class="action-buttons">
+                        <label for="imageInput" class="upload-icon-btn" title="Upload Image">
+                            <span class="btn-icon">📷</span>
+                        </label>
+                        <button type="submit" id="submitBtn">
+                            <span class="btn-icon">➤</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="responseSection" class="response-section glass-panel hidden">
+                <div class="response-header">
+                    <h2>Solution</h2>
+                    <div class="actions">
+                        <button id="copyBtn" class="icon-btn" title="Copy to clipboard">📋</button>
+                    </div>
+                </div>
+                <div id="loadingIndicator" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Thinking...</p>
+                </div>
+                <div id="responseContent" class="markdown-body"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by Gemini AI</p>
+        </footer>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatWidget" class="chat-widget">
+        <button id="chatToggleBtn" class="chat-toggle-btn">
+            <span class="icon">💬</span>
+        </button>
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <h3>AI Assistant</h3>
+                <button id="closeChatBtn" class="close-chat-btn">×</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="message ai-message">
+                    Hello! I'm your AI tutor. Ask me anything! 👋
+                </div>
+            </div>
+            <form id="chatForm" class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type a message..." required>
+                <button type="submit" class="send-btn">➤</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Config.js is optional - works without it on Vercel -->
+    <script src="config.js" onerror="console.log('Running in production mode')"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

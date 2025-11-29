@@ -1,0 +1,12 @@
+{
+    "name": "nlrc-ai-homework-solver",
+    "version": "1.0.0",
+    "description": "AI Homework Solver",
+    "type": "module",
+    "scripts": {
+        "start": "node api/generate.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
